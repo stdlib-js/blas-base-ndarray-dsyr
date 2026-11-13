@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,19 +16,32 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { float64ndarray, ndarray } from '@stdlib/types/ndarray';
 
 /**
-* BLAS level 2 routine to perform the symmetric rank 1 operation `A = alpha*x*x^T + A`.
+* Performs the symmetric rank 1 operation `A = alpha*x*x^T + A`, where `alpha` is a scalar, `x` is a one-dimensional ndarray, and `A` is an `N` by `N` symmetric matrix.
 *
-* @module @stdlib/blas-base-ndarray-dsyr
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray corresponding to `x`.
+*     -   a two-dimensional input/output ndarray corresponding to `A`.
+*     -   a zero-dimensional ndarray specifying whether the upper or lower triangular part of the symmetric matrix `A` should be referenced.
+*     -   a zero-dimensional ndarray containing a scalar constant corresponding to `alpha`.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns output ndarray
 *
 * @example
 * var Float64Matrix = require( '@stdlib/ndarray-matrix-float64' );
 * var Float64Vector = require( '@stdlib/ndarray-vector-float64' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
 * var resolveEnum = require( '@stdlib/blas-base-matrix-triangle-resolve-enum' );
-* var dsyr = require( '@stdlib/blas-base-ndarray-dsyr' );
 *
 * var x = new Float64Vector( [ 1.0, 2.0, 3.0 ] );
 * var A = new Float64Matrix( [ [ 1.0, 2.0, 3.0 ], [ 2.0, 1.0, 2.0 ], [ 3.0, 2.0, 1.0 ] ] );
@@ -46,12 +59,9 @@
 * var bool = ( y === A );
 * // returns true
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function dsyr( arrays: [ float64ndarray, float64ndarray, ndarray, float64ndarray ] ): float64ndarray;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = dsyr;
